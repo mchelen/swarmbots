@@ -1,0 +1,19 @@
+{
+  "name": "swarmbots",
+  "version": "1.0.0",
+  "description": "",
+  "main": "agent.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mchelen/swarmbots.git"
+  },
+  "author": "Mike Chelen <michael.chelen@gmail.com> (https://github.com/mchelen/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mchelen/swarmbots/issues"
+  },
+  "homepage": "https://github.com/mchelen/swarmbots#readme"
+}
