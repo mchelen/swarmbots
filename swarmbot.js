@@ -64,16 +64,18 @@ params = {
 }
 */
 
-function createAgent(params,create_agent_callback) {
+function createAgent(params) {
 	var newAgent = Object.create(agent);
 	newAgent.x = params.x;
 	newAgent.y = params.y;
 	newAgent.world = params.world;
 	newAgent.elementId = params.id;
 	
+	// set display callback
 	newAgent.display_callback = params.display_callback;
 	
-	create_agent_callback(newAgent.elementId);
+	// one time creation callback
+	params.create_agent_callback(newAgent.elementId);
 	
 	return newAgent;
 }

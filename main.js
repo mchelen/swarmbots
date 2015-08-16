@@ -32,14 +32,15 @@ function create_agent_callback (elementId) {
 //create agents
 
 
-
+/*
 params = {
   id: "foo123",
   x: 200,
   y: 200,
   world: world,
-  display_callback: display_callback
-}
+  display_callback: display_callback,
+  create_agent_callback: create_agent_callback,
+}*/
 
 // var foo = swarmbot(params,create_agent_callback);
 
@@ -53,8 +54,9 @@ for (i=0; i<agent_count; i++) {
     x:200,
     y:200 + Math.floor(Math.random() * 360),
     world: world,
-    display_callback: display_callback
-  },create_agent_callback);
+    display_callback: display_callback,
+    create_agent_callback: create_agent_callback,
+  });
 }
 
 
