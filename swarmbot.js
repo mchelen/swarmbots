@@ -1,10 +1,5 @@
 "use strict"
 
-/*
-window.jQuery = window.$ = require("jquery");
-require("velocity-animate");
-*/
-
 var agent = {
   x: null,
   y: null,
@@ -13,6 +8,7 @@ var agent = {
   world: null,
   elementId: null,
   display_callback: null,
+  create_agent_callback: null,
 
   // moves agent a given x,y from current position
 	move: function(x, y) {
@@ -68,14 +64,16 @@ params = {
 }
 */
 
-function createAgent(params,callback) {
+function createAgent(params,create_agent_callback) {
 	var newAgent = Object.create(agent);
 	newAgent.x = params.x;
 	newAgent.y = params.y;
 	newAgent.world = params.world;
 	newAgent.elementId = params.id;
+	
 	newAgent.display_callback = params.display_callback;
-	callback(newAgent.elementId);
+	
+	create_agent_callback(newAgent.elementId);
 	
 	return newAgent;
 }
