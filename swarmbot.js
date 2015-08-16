@@ -12,6 +12,7 @@ var agent = {
   heading : 90,
   world: null,
   elementId: null,
+  display_callback: null,
 
   // moves agent a given x,y from current position
 	move: function(x, y) {
@@ -51,12 +52,8 @@ var agent = {
     this.travel(this.velocity,this.heading);
   },
 
-  display: function(velocity_options){
-    $("#"+this.elementId).velocity({ 
-      top: this.y,
-      left: this.x,
-    }, velocity_options);
-    console.log('x='+this.x+', y='+this.y);
+  display: function(){
+    this.display_callback(this.elementID);  
   },
 
 }
@@ -71,15 +68,15 @@ params = {
 }
 */
 
-function createAgent(params) {
+function createAgent(params,callback) {
 	var newAgent = Object.create(agent);
 	newAgent.x = params.x;
 	newAgent.y = params.y;
 	newAgent.world = params.world;
 	newAgent.elementId = params.id;
-	
+	newAgent.display_callback = params.display_callback;
 	callback(newAgent.elementId);
-	$("#agentsContainer").append('<div id="'+newAgent.elementId+'" class="agent"></div>');
+	
 	return newAgent;
 }
 

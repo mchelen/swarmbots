@@ -19,20 +19,31 @@ var world = {
 //create agents
 
 
+var velocity_options = 500;
+
 params = {
   id: "foo123",
   x: 200,
   y: 200,
   world: world,
+  display_callback: function() {
+      $("#"+this.elementId).velocity({ 
+      top: this.y,
+      left: this.x,
+      }, velocity_options);
+      console.log('x='+this.x+', y='+this.y);
+    }
 }
 
-var foo = swarmbot(params);
+var foo = swarmbot(params,function(bar) {
+  $("#agentsContainer").append('<div id="'+bar+'" class="agent"></div>');
+});
 
-foo.display(500);
+foo.display();
 foo.step();
-foo.display(500);
+foo.display();
 foo.step();
-foo.display(500);
+foo.display();
 
 
 /*
