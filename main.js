@@ -1,6 +1,15 @@
 
 var swarmbot = require('./swarmbot');
 
+window.jQuery = window.$ = require("jquery");
+
+require("velocity-animate");
+
+/* Your app code here. */
+$("body").velocity({ opacity: 0.5 });
+
+
+
 //create agents
 
 var agents = []; // create empty array

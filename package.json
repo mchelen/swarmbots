@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/mchelen/swarmbots/issues"
   },
-  "homepage": "https://github.com/mchelen/swarmbots#readme"
+  "homepage": "https://github.com/mchelen/swarmbots#readme",
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "velocity-animate": "^1.2.2"
+  }
 }
