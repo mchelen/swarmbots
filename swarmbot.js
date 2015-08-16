@@ -1,10 +1,17 @@
 "use strict"
 
-var agent = {
+/*
+window.jQuery = window.$ = require("jquery");
+require("velocity-animate");
+*/
 
+var agent = {
+  x: null,
+  y: null,
   velocity:  25,
   heading : 90,
   world: null,
+  elementId: null,
 
   // moves agent a given x,y from current position
 	move: function(x, y) {
@@ -44,20 +51,35 @@ var agent = {
     this.travel(this.velocity,this.heading);
   },
 
-  display: function(){
+  display: function(velocity_options){
+    $("#"+this.elementId).velocity({ 
+      top: this.y,
+      left: this.x,
+    }, velocity_options);
     console.log('x='+this.x+', y='+this.y);
   },
 
 }
 
 
+/*
+params = {
+  id: "foo",
+  x: 200,
+  y: 200,
+  world
+}
+*/
 
-
-function createAgent(x, y, world) {
+function createAgent(params) {
 	var newAgent = Object.create(agent);
-	newAgent.x = x;
-	newAgent.y = y;
-	newAgent.world = world;
+	newAgent.x = params.x;
+	newAgent.y = params.y;
+	newAgent.world = params.world;
+	newAgent.elementId = params.id;
+	
+	callback(newAgent.elementId);
+	$("#agentsContainer").append('<div id="'+newAgent.elementId+'" class="agent"></div>');
 	return newAgent;
 }
 

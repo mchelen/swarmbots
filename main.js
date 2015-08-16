@@ -5,16 +5,8 @@ window.jQuery = window.$ = require("jquery");
 
 require("velocity-animate");
 
-/* Your app code here. */
-$("body").velocity({ opacity: 0.5 });
 
-
-
-//create agents
-
-var agents = []; // create empty array
-
-var agentCount = 5; // how many agents to create
+// $("body").velocity({ opacity: 0.5 });
 
 var world = {
       xMin : 0,
@@ -22,25 +14,35 @@ var world = {
       xMax : 800,
       yMax : 300,    
     };
+ 
+
+//create agents
 
 
-var foo = swarmbot(200,200,world);
+params = {
+  id: "foo123",
+  x: 200,
+  y: 200,
+  world: world,
+}
 
+var foo = swarmbot(params);
 
-foo.display();
-
+foo.display(500);
 foo.step();
-
-foo.display();
-
-foo.setTravel(25, 105);
-
+foo.display(500);
 foo.step();
-
-foo.display();
+foo.display(500);
 
 
 /*
+
+
+var agents = []; // create empty array
+
+var agentCount = 5; // how many agents to create
+
+
 for (i=0; i<agentCount; i++) {
   agents[agents.length] = swarmbot(200,200,world);
 }
