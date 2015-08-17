@@ -3,8 +3,8 @@
 var agent = {
   x: null,
   y: null,
-  velocity:  25,
-  heading : 90,
+  velocity:  null,
+  heading : null,
   world: null,
   elementId: null,
   display_callback: null,
@@ -72,7 +72,9 @@ function createAgent(params) {
 	// set agent world and element id
 	newAgent.world = params.world;
 	newAgent.elementId = params.id;
-	
+	newAgent.velocity = params.velocity;
+	newAgent.heading = params.heading;
+		
 	// set starting location
 	newAgent.setX(params.x);
 	newAgent.setY(params.y);
@@ -81,7 +83,7 @@ function createAgent(params) {
 	newAgent.display_callback = params.display_callback;
 	
 	// one time creation callback
-	params.create_agent_callback(newAgent.elementId);
+	params.create_agent_callback(newAgent.elementId,newAgent.x,newAgent.y);
 	
 	return newAgent;
 }

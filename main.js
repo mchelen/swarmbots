@@ -22,11 +22,11 @@ function display_callback() {
   top: this.y,
   left: this.x,
   }, velocity_options);
-  console.log('x='+this.x+', y='+this.y);
+  console.log('agent: '+this.elementId+', x='+this.x+', y='+this.y);
 }
 
-function create_agent_callback (elementId) {
-  $("#agentsContainer").append('<div id="'+elementId+'" class="agent"></div>');
+function create_agent_callback (elementId,x,y) {
+  $("#agentsContainer").append('<div id="'+elementId+'" class="agent" style="top:'+x+'px;left:'+y+'px;"></div>');
 }
 
 //create agents
@@ -49,21 +49,25 @@ var agents = []; // create empty array
 var agent_count = 5; // how many agents to create
 
 for (i=0; i<agent_count; i++) {
-  agents[agents.length] = swarmbot({
+  agents[i] = swarmbot({
     id: "foo" + i,
     x:200,
-    y:200 + Math.floor(Math.random() * 360),
+    y:200,
     world: world,
+    velocity: 50,
+    heading: 90,
     display_callback: display_callback,
     create_agent_callback: create_agent_callback,
   });
+  agents[i].display();
 }
 
 
 for (j=0;j<3;j++) {
-  for (i=0;i<agents.length;i++) {
-      agents[i].display();
+  for (i=0;i<agents.length;i++) {     
+      agents[i].heading = Math.floor(Math.random() * 360) + 1;
       agents[i].step();
+      agents[i].display();
   }
 }
 
