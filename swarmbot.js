@@ -60,17 +60,23 @@ params = {
   id: "foo",
   x: 200,
   y: 200,
-  world
+  world: world,
+  display_callback: display_callback,
+  create_agent_callback: create_agent_callback,
 }
 */
 
 function createAgent(params) {
 	var newAgent = Object.create(agent);
-	newAgent.x = params.x;
-	newAgent.y = params.y;
+	
+	// set agent world and element id
 	newAgent.world = params.world;
 	newAgent.elementId = params.id;
 	
+	// set starting location
+	newAgent.setX(params.x);
+	newAgent.setY(params.y);
+		
 	// set display callback
 	newAgent.display_callback = params.display_callback;
 	
